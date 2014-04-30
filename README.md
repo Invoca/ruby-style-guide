@@ -43,7 +43,8 @@ size > 10 ? 'large' : 'small'
 params = {}
 ```
 
-The only exception is when using the exponent operator:
+####Exceptions:
+*when using the exponent operator:*
 
 ```ruby
 # bad
@@ -51,6 +52,15 @@ e = M * c ** 2
 
 # good
 e = M * c**2
+```
+
+*when inside string interpolation:*
+```ruby
+# bad
+"it's more difficult #{ 'to parse' } that some spaces don't have meaning"
+
+# good
+"even though #{'the spaces are inside'} interpolation"
 ```
 
 ### No spaces after `(`, `[` or before `]`, `)`.
