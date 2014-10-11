@@ -314,7 +314,30 @@ end
 if (x = self.next_value)
   ...
 end
+
+# bad
+if x = self.next_value
+  ...
+end
 ```
+
+### returning early
+Don't return early unless in a guard clause
+```ruby
+# bad
+def my_smelly_method
+  x = i_do_some_work
+  return x if I_dont_want_to_do_anymore_work
+  do_more_work(x)
+end
+
+# ok
+def my_method
+  return if i_dont_care_about_this_case
+  work_i_do_in_other_cases(x)
+end
+```
+
 
 ### Favor modifier `while/until` usage when you have a single-line body.
 
@@ -1131,4 +1154,3 @@ Ideally, most methods will be shorter than 5 lines of code. Comments and empty l
 
 ### Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
-
