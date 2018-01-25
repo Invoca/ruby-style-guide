@@ -13,19 +13,19 @@ These contents are not expected to be requirements for code to pass review, but 
 
 ## Table of Contents
 * [Source Code Layout](#source-code-layout)
- * [Syntax](#syntax)
- * [Naming](#naming)
- * [Comments](#comments)
- * [Annotations](#annotations)
- * [Classes](#classes)
- * [Exceptions](#exceptions)
- * [Collections](#collections)
- * [Strings](#strings)
- * [Regular Expressions](#regular-expressions)
- * [Metaprogramming](#metaprogramming)
- * [Misc](#misc)
+  * [Syntax](#syntax)
+  * [Naming](#naming)
+  * [Comments](#comments)
+  * [Annotations](#annotations)
+  * [Classes](#classes)
+  * [Exceptions](#exceptions)
+  * [Collections](#collections)
+  * [Strings](#strings)
+  * [Regular Expressions](#regular-expressions)
+  * [Metaprogramming](#metaprogramming)
+  * [Misc](#misc)
 * [Preferred Ruby-isms](#preferred-ruby-isms)
- * [Casting Booleans](#casting-booleans)
+  * [Casting Booleans](#casting-booleans)
 
 
 ## Source Code Layout
@@ -1134,10 +1134,10 @@ Items under this section are designed to help clarify design patterns common in 
 
 1. Avoiding common bugs
 2. Creating code that is more:
- 1. maintainable
- 2. understandable
- 3. extendable
- 4. intention revealing
+  1. maintainable
+  2. understandable
+  3. extendable
+  4. intention revealing
 
 ### Casting Booleans with `!!`
 
