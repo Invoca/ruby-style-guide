@@ -1,22 +1,36 @@
 # Prelude
 Invoca Ruby Style Guide initially forked from https://github.com/bbatsov/ruby-style-guide.
 
-## Table of Contents
+Our Ruby Style Guide is enforced by [Rubocop](https://github.com/bbatsov/rubocop), a static code analyzer.
 
+### Making Changes
+
+This guide exists to represent the collective knowledge and agreed upon standards Invoca's of Engineering department. Changes are welcome and encouraged from all sources! Contributors should try, and may be required, to provide background information and/or reasoning behind their proposed change.
+
+Changes do not, and should not, be expected to be retroactively applied to existing, merged code.
+
+These contents are not expected to be requirements for code to pass review, but rather a reference of the collective understanding for writing clean, maintainable, and understandable code. With that said, ignoring these helpful hints and tools may require exceptional cases!
+
+## Table of Contents
 * [Source Code Layout](#source-code-layout)
-* [Syntax](#syntax)
-* [Naming](#naming)
-* [Comments](#comments)
-* [Annotations](#annotations)
-* [Classes](#classes)
-* [Exceptions](#exceptions)
-* [Collections](#collections)
-* [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
-* [Metaprogramming](#metaprogramming)
-* [Misc](#misc)
+ * [Syntax](#syntax)
+ * [Naming](#naming)
+ * [Comments](#comments)
+ * [Annotations](#annotations)
+ * [Classes](#classes)
+ * [Exceptions](#exceptions)
+ * [Collections](#collections)
+ * [Strings](#strings)
+ * [Regular Expressions](#regular-expressions)
+ * [Metaprogramming](#metaprogramming)
+ * [Misc](#misc)
+* [Preferred Ruby-isms](#preferred-ruby-isms)
+ * [Casting Booleans](#casting-booleans)
+
 
 ## Source Code Layout
+
+Items under this section should be primarily focused on code style. These types of topics should almost always be caught by Rubocop. Additions and deletions to this section likely will require an update to our `.rubocop.yml` templates.
 
 ### Use two **spaces** per indentation level. No hard tabs.
 
@@ -1112,3 +1126,48 @@ Ideally, most methods will be shorter than 5 lines of code. Comments and empty l
 
 ### Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
+
+
+## Preferred Ruby-isms
+
+Items under this section are designed to help clarify design patterns common in our Ruby code. These patterns are designed to help in various ways, including but not limited to:
+
+1. Avoiding common bugs
+2. Creating code that is more:
+ 1. maintainable
+ 2. understandable
+ 3. extendable
+ 4. intention revealing
+
+### Casting Booleans with `!!`
+
+A common ruby-ism for casting booleans is to precede the method call(s) with `!!`. By calling the negation operator twice, we cast to a boolean twice. The first is the negated boolean (e.g. nil => true) and the second converts the new boolean to the original truthiness (e.g. nil => true => false).
+
+This style should be used when truthiness is not acceptable, and a `true` or `false` value is required or expected. This includes, but is not limited to:
+
+1. Building a hash that will be converted to JSON, and the contract expects a boolean
+2. Defining the return value for query methods (methods with a name ending in a `?`)
+
+##### Useful
+```ruby
+# JSON expects true/false, not truthiness
+def to_json
+  record = find_by_id(1)
+  {
+    record_exists: !!record
+  }
+end
+
+# Ruby convention says query methods, those ending in `?`, should return a true or false value
+def valid?
+  !!(condition_1 && condition_2)
+end
+
+```
+##### Unnecessary
+```ruby
+# The if only needs truthiness, not explicit true or false
+if !!User.find_by_id(1)
+  ...
+end
+```
