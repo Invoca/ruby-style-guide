@@ -1134,10 +1134,10 @@ Items under this section are designed to help clarify design patterns common in 
 
 1. Avoiding common bugs
 2. Creating code that is more:
-  1. maintainable
-  2. understandable
-  3. extendable
-  4. intention revealing
+   * maintainable
+   * understandable
+   * extendable
+   * intention revealing
 
 ### Casting Booleans with `!!`
 
