@@ -5,7 +5,7 @@ Our Ruby Style Guide is enforced by [Rubocop](https://github.com/bbatsov/rubocop
 
 ### Making Changes
 
-This guide exists to represent the collective knowledge and agreed upon standards Invoca's of Engineering department. Changes are welcome and encouraged from all sources! Contributors should try, and may be required, to provide background information and/or reasoning behind their proposed change.
+This guide exists to represent the collective knowledge and agreed upon standards of Invoca's Engineering department. Changes are welcome and encouraged from all sources! Contributors should try, and may be required, to provide background information and/or reasoning behind their proposed change.
 
 Changes do not, and should not, be expected to be retroactively applied to existing, merged code.
 
