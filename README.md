@@ -143,6 +143,33 @@ def send_mail(source)
 end
 ```
 
+### Align multiline method call chains with an indent relative the receiver
+```
+# bad
+collection
+.transformA { ... }
+.transformB { ... }
+
+# good
+collection
+  .transformA { ... }
+  .transformB { ... }
+
+# good
+while myvariable
+        .a
+        .b
+
+  # do something
+end
+
+# good
+myvariable = Thing
+               .a
+               .b
+               .c
+```
+
 ### Use RDoc and its conventions for API documentation.
   Don't put an empty line between the comment block and the `def`.
 
