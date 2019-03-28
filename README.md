@@ -144,7 +144,7 @@ end
 ```
 
 ### Align multiline method call chains with an indent relative the receiver
-```
+```ruby
 # bad
 collection
 .transformA { ... }
